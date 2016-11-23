@@ -52,7 +52,6 @@ $navbar-default-bg: black;
 
 .article-body{
     border-top: 1px solid #eaeaea;
-
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -61,4 +60,21 @@ footer {
     padding-top: 5px;
     border-top: 1px solid blue;
     color: #777;
+}
+footer a:hover{
+    color: #222;
+}
+
+footer small {
+    float: left;
+}
+
+footer ul {
+    float: right;
+    list-style: none;
+}
+
+footer ul li {
+    float: left;
+    margin-left: 15px;
 }
