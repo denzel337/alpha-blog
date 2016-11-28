@@ -10,9 +10,11 @@ class UsersController < ApplicationController
         redirect_to articles_path
     else
         render 'new'
-        end
     end
-    
+    end
+    def show
+        @user = User.find(params[:id])
+    end
     def edit
         @user = User.find(params[:id])
     end
