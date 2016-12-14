@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     def index
        @users = User.paginate(page: params[:page], per_page: 5)
     end    
+    
     def new
     @user = User.new
     end
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
     flash[:danger] = "User and all articles created by user have delete"
     redirect_to users_path
     end
+    
     def edit
     end
 
@@ -49,16 +51,17 @@ class UsersController < ApplicationController
           @user = User.find(params[:id])
     end
         
-    def require_same_user
-        if  current_user != @user and !current_user.admin?
-            flash[:danger] = "You can only edit or delete your own article"
-            redirect_to root_path
-        end
-     end    
-     def require_admin
-         if logged_in? and !current_user.admin?
-             flash[:danger] = "Onky admin users can perform that action"
-             redirect_to root_path
-    end 
-        end     
+def require_same_user
+    if current_user != @user and !current_user.admin?
+      flash[:danger] = "You can only edit your own account"
+      redirect_to root_path
+    end
+end  
+def require_admin
+    if logged_in? and !current_user.admin?
+      flash[:danger] = "Only admin users can perform that action"
+      redirect_to root_path
+    end
+end
+  
 end
